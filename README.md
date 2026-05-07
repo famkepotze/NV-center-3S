@@ -7,7 +7,7 @@ make an Nv center unit cell of 1x1x1, 2x2x2 or 3x3x3 and save to results/raw_str
 relaxes these structures using QEpsuedopotentials, results are saved in results/relaxed_structures/tot_charge-1
 
 3. calculate_dos.py
-runs SCF, NCH and then calculates the DOS, results are saved in results/dos_tot_tcharge-1.
+runs SCF, NSCF and then calculates the DOS, results are saved in results/dos_tot_tcharge-1.
 
 in shellscripts 
 run_geometryoptimalsiation.sh & run_calcaulte_dos.sh 

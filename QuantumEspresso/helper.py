@@ -35,6 +35,9 @@ pseudopotentials = {
 # ============================================================
 # RELAXATION
 # ============================================================
+
+
+
 relax_calc = Espresso(
     profile=profile,
     pseudopotentials=pseudopotentials,
@@ -68,6 +71,9 @@ relax_calc = Espresso(
 )
 
 
+base = Path("/Users/famkepotze/Desktop/3S/NV-center-3S/QuantumEspresso")
+shared_outdir = str(base / "results/dos_tot_charge-1/out")
+
 scf_calc = Espresso(
     profile=profile,
     pseudopotentials=pseudopotentials,
@@ -75,7 +81,7 @@ scf_calc = Espresso(
         'control': {
             'calculation': 'scf',
             'pseudo_dir': str(pseudo_dir),
-            'outdir': './out',
+            'outdir': shared_outdir,  # absolute
         },
         'system': {
             'ecutwfc': 60,
@@ -86,12 +92,10 @@ scf_calc = Espresso(
             'nbnd': 200,
             'occupations': 'tetrahedra',
         },
-        'electrons': {
-            'conv_thr': 1e-8,
-        },
+        'electrons': {'conv_thr': 1e-8},
     },
     kpts=(4, 4, 4),
-    directory='nv_scf'
+    directory=str(base / 'nv_scf')
 )
 
 nscf_calc = Espresso(
@@ -101,7 +105,7 @@ nscf_calc = Espresso(
         'control': {
             'calculation': 'nscf',
             'pseudo_dir': str(pseudo_dir),
-            'outdir': './out',
+            'outdir': shared_outdir,  # same absolute path
         },
         'system': {
             'ecutwfc': 60,
@@ -112,12 +116,11 @@ nscf_calc = Espresso(
             'nbnd': 200,
             'occupations': 'tetrahedra',
         },
-        'electrons': {
-            'conv_thr': 1e-8,
-        },
+        'electrons': {'conv_thr': 1e-8},
     },
     kpts=(6, 6, 6),
-    directory='nv_nscf'
+    directory=str(base / 'nv_nscf')
+    
 )
 
 

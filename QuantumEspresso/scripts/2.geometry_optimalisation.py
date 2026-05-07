@@ -45,7 +45,6 @@ monitor = ProgressUpdate("nv_relax/espresso.pwo", mode="relax")
 t = Thread(target=monitor.run)
 t.start()
 
-
 atoms.calc = relax_calc
 
 try:

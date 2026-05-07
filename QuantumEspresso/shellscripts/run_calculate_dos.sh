@@ -42,5 +42,6 @@ do
     echo "✔ Finished NV_${i}x${i}x${i}"
 done
 
+
 echo ""
 echo "🎉 All calculations complete."
